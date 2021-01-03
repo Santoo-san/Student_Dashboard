@@ -12,11 +12,12 @@ class DisplayStudents extends React.Component {
 
   render() {
     return (
-      <div>
-        {console.log(this.state.students)}
-        <StudentsList students={this.state.students} />
-        <p> render DisplayStudents</p>
-      </div>
+      <table>
+        <tbody>
+          {console.log(this.state.students)}
+          <StudentsList students={this.state.students} />
+        </tbody>
+      </table>
     );
   }
 }

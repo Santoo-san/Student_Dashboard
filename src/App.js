@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import DisplayStudents from "./components/DisplayStudents";
+import BarChart from "./components/BarChart/BarChart";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <BarChart />
         <DisplayStudents />
         <a
           className="App-link"
