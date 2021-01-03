@@ -1,5 +1,11 @@
 import React from "react";
-import { VictoryBar, VictoryChart, VictoryGroup, VictoryTheme } from "victory";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryGroup,
+  VictoryTheme,
+  VictoryStack,
+} from "victory";
 
 const data2012 = [
   { quarter: 1, earnings: 13000 },
@@ -36,9 +42,7 @@ class BarChart extends React.Component {
       <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
         <VictoryGroup offset={10} colorScale={"qualitative"}>
           <VictoryBar data={students} x="Project" y="Difficulty" />
-          {/* <VictoryBar data={data2013} x="quarter" y="earnings" />
-          <VictoryBar data={data2014} x="quarter" y="earnings" />
-          <VictoryBar data={data2015} x="quarter" y="earnings" /> */}
+          <VictoryBar data={students} x="Project" y="Rating" />
         </VictoryGroup>
       </VictoryChart>
     );
