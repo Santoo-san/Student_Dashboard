@@ -28,16 +28,17 @@ const data2015 = [
   { quarter: 3, earnings: 15000 },
   { quarter: 4, earnings: 12000 },
 ];
-
+//victorystack gebruiken om data van meerdere studenten te stapelen in 1 bar?
 class BarChart extends React.Component {
   render() {
+    const { students } = this.props;
     return (
       <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
         <VictoryGroup offset={10} colorScale={"qualitative"}>
-          <VictoryBar data={data2012} x="quarter" y="earnings" />
-          <VictoryBar data={data2013} x="quarter" y="earnings" />
+          <VictoryBar data={students} x="Project" y="Difficulty" />
+          {/* <VictoryBar data={data2013} x="quarter" y="earnings" />
           <VictoryBar data={data2014} x="quarter" y="earnings" />
-          <VictoryBar data={data2015} x="quarter" y="earnings" />
+          <VictoryBar data={data2015} x="quarter" y="earnings" /> */}
         </VictoryGroup>
       </VictoryChart>
     );
