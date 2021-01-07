@@ -4,40 +4,46 @@ import {
   VictoryChart,
   VictoryGroup,
   VictoryTheme,
-  VictoryStack,
+  //   VictoryStack,
 } from "victory";
 
-const data2012 = [
-  { quarter: 1, earnings: 13000 },
-  { quarter: 2, earnings: 16500 },
-  { quarter: 3, earnings: 14250 },
-  { quarter: 4, earnings: 19000 },
-];
-
-const data2013 = [
-  { quarter: 1, earnings: 15000 },
-  { quarter: 2, earnings: 12500 },
-  { quarter: 3, earnings: 19500 },
-  { quarter: 4, earnings: 13000 },
-];
-
-const data2014 = [
-  { quarter: 1, earnings: 11500 },
-  { quarter: 2, earnings: 13250 },
-  { quarter: 3, earnings: 20000 },
-  { quarter: 4, earnings: 15500 },
-];
-
-const data2015 = [
-  { quarter: 1, earnings: 18000 },
-  { quarter: 2, earnings: 13250 },
-  { quarter: 3, earnings: 15000 },
-  { quarter: 4, earnings: 12000 },
-];
-//victorystack gebruiken om data van meerdere studenten te stapelen in 1 bar?
 class BarChart extends React.Component {
   render() {
     const { students } = this.props;
+    const allProjects = students.map((a) => a.Project);
+    console.log(allProjects);
+    const projects = [...new Set(allProjects)];
+    console.log(projects);
+    // const sortedProjects = projects.sort();
+    const sortedProjects = projects.map((project) => {
+      return students.filter((x) => x.Project === project);
+    });
+    console.log(sortedProjects);
+
+    const projectSum = sortedProjects.map((a) => {
+      console.log(a);
+      return a.reduce((sum, value) => {
+        return {
+          project: value.Project,
+          difficulty: sum.difficulty + value.difficulty,
+          rating: sum.rating + value.rating,
+        };
+      });
+    });
+    console.log(projectSum);
+    //check why 'scrum' does not appear in 'projectsum"
+    //put single project into function findAverage
+
+    const findAverage = (arr) => {
+      const { length } = arr;
+      return arr.reduce((acc, val) => {
+        return acc + val.Difficulty / length;
+      }, 0);
+    };
+    console.log(findAverage(students));
+
+    //make array with project,difficulty and rating
+
     return (
       <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
         <VictoryGroup offset={10} colorScale={"qualitative"}>

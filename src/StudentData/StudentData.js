@@ -96,7 +96,7 @@ const StudentData = {
     //   Difficulty: 5,
     //   Rating: 5,
     // },
-    // { Name: "Aranka", Project: "SCRUM", Difficulty: 1, Rating: 1 },
+    { Name: "Aranka", Project: "SCRUM", Difficulty: 1, Rating: 1 },
     // { Name: "Aranka", Project: "W1D1-1", Difficulty: 4, Rating: 3 },
     // { Name: "Aranka", Project: "W1D2-1", Difficulty: 3, Rating: 1 },
     // { Name: "Aranka", Project: "W1D2-2", Difficulty: 3, Rating: 2 },
