@@ -20,6 +20,15 @@ class BarChart extends React.Component {
     });
     console.log(sortedProjects);
 
+    const Arr = sortedProjects.flat();
+    console.log(Arr);
+
+    const sum = Arr.map((item) => item.Difficulty).reduce(
+      (prev, curr) => prev + curr,
+      0
+    );
+    console.log(sum);
+
     const projectSum = sortedProjects.map((projects) => {
       console.log(projects);
       return projects.reduce((sum, value) => {
@@ -34,6 +43,22 @@ class BarChart extends React.Component {
       });
     });
     console.log(projectSum);
+
+    // const projectSum2 = sortedProjects.map((projects) => {
+    //   console.log(projects);
+    //   return projects.keys(projects).reduce((sum, value) => {
+    //     //   console.log(value.Project);
+    //     //   console.log(value.Difficulty);
+    //     //   console.log(value.Rating);
+    //     return {
+    //       project: value.Project,
+    //       difficulty: sum.Difficulty + projects[value.Difficulty],
+    //       rating: sum.Rating + value.Rating,
+    //     };
+    //   });
+    // });
+
+    // console.log(projectSum2);
     //put single project into function findAverage
     const numberOfProjects = sortedProjects.map((b) => {
       //   console.log(b[0].Project);
