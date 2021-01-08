@@ -17,7 +17,7 @@ class DisplayStudents extends React.Component {
         <BarChart students={this.state.students} />
         <table>
           <tbody>
-            {console.log(this.state.students)}
+            {/* {console.log(this.state.students)} */}
             <StudentsList students={this.state.students} />
           </tbody>
         </table>
