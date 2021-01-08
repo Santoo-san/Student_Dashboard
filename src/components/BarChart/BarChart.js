@@ -18,14 +18,14 @@ class BarChart extends React.Component {
     const sortedProjects = projects.map((project) => {
       return students.filter((x) => x.Project === project);
     });
-    // console.log(sortedProjects);
+    console.log(sortedProjects);
 
-    const projectSum = sortedProjects.map((a) => {
-      //   console.log(a);
-      return a.reduce((sum, value) => {
-        // console.log(value.Project);
-        // console.log(value.Difficulty);
-        // console.log(value.Rating);
+    const projectSum = sortedProjects.map((projects) => {
+      console.log(projects);
+      return projects.reduce((sum, value) => {
+        console.log(value.Project);
+        console.log(value.Difficulty);
+        console.log(value.Rating);
         return {
           project: value.Project,
           difficulty: sum.Difficulty + value.Difficulty,
@@ -33,7 +33,7 @@ class BarChart extends React.Component {
         };
       });
     });
-    // console.log(projectSum);
+    console.log(projectSum);
     //put single project into function findAverage
     const numberOfProjects = sortedProjects.map((b) => {
       //   console.log(b[0].Project);
@@ -46,19 +46,19 @@ class BarChart extends React.Component {
 
     const findAverage = projectSum.map((value) => {
       const numberOfProjects2 = numberOfProjects[0].sumOfProjects;
-      //   console.log(
-      //     value.project,
-      //     value.difficulty,
-      //     value.rating,
-      //     numberOfProjects2
-      //   );
+      console.log(
+        value.project,
+        value.difficulty,
+        value.rating,
+        numberOfProjects2
+      );
       return {
         project: value.project,
         difficulty: value.difficulty / numberOfProjects2,
         rating: value.rating / numberOfProjects2,
       };
     });
-    // console.log(findAverage);
+    console.log(findAverage);
 
     //make array with project,difficulty and rating
 
