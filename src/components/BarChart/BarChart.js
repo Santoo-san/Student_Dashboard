@@ -11,102 +11,49 @@ class BarChart extends React.Component {
   render() {
     const { students } = this.props;
     const allProjects = students.map((a) => a.Project);
-    // console.log(allProjects);
-    const projects = [...new Set(allProjects)];
-    // console.log(projects);
+    const getProjectNames = [...new Set(allProjects)];
 
-    const sortedProjects = projects.map((project) => {
+    const sortedProjects = getProjectNames.map((project) => {
       return students.filter((x) => x.Project === project);
     });
-    console.log(sortedProjects);
 
-    // const arr = sortedProjects.flat();
-    // console.log(arr);
-
-    // const sum = Arr.map((projects) => projects.Difficulty).reduce(
-    //   (prev, curr) => prev + curr,
-    //   0
-    // );
-    // console.log(sum);
-
-    // const sumOfProjects = arr.map((projects) => {
-    //   console.log(projects);
-    //   return projects.reduce((prev, curr) => {
-    //     console.log(curr.Project);
-    //     console.log(curr.Difficulty);
-    //     console.log(curr.Rating);
-    //     return {
-    //       project: curr.Project,
-    //       difficulty: prev.Difficulty + curr.Difficulty,
-    //       rating: prev.Rating + curr.Rating,
-    //     };
-    //   });
-    // });
-    // console.log(sumOfProjects);
-
-    const projectSum = sortedProjects.map((projects) => {
-      console.log(projects);
-      return projects.reduce((sum, value) => {
-        console.log(value.Project);
-        console.log(value.Difficulty);
-        console.log(value.Rating);
+    const sumProjects = sortedProjects.map((projects) => {
+      return projects.reduce((sum, project) => {
         return {
-          project: value.Project,
-          difficulty: sum.Difficulty + value.Difficulty,
-          rating: sum.Rating + value.Rating,
+          Project: project.Project,
+          Difficulty: sum.Difficulty + project.Difficulty,
+          Rating: sum.Rating + project.Rating,
         };
       });
     });
-    console.log(projectSum);
 
-    // const projectSum2 = sortedProjects.map((projects) => {
-    //   console.log(projects);
-    //   return projects.keys(projects).reduce((sum, value) => {
-    //     //   console.log(value.Project);
-    //     //   console.log(value.Difficulty);
-    //     //   console.log(value.Rating);
-    //     return {
-    //       project: value.Project,
-    //       difficulty: sum.Difficulty + projects[value.Difficulty],
-    //       rating: sum.Rating + value.Rating,
-    //     };
-    //   });
-    // });
-
-    // console.log(projectSum2);
-    //put single project into function findAverage
-    const numberOfProjects = sortedProjects.map((b) => {
-      //   console.log(b[0].Project);
+    const findNumberOfProjects = sortedProjects.map((project) => {
       return {
-        project: b[0].Project,
-        sumOfProjects: b.length,
+        project: project[0].Project,
+        sumOfProjects: project.length,
       };
     });
-    console.log(numberOfProjects);
 
-    const findAverage = projectSum.map((value) => {
-      const numberOfProjects2 = numberOfProjects[0].sumOfProjects;
-      console.log(
-        value.project,
-        value.difficulty,
-        value.rating,
-        numberOfProjects2
+    const findNumberOfProject = (projectName) => {
+      const selectedProject = findNumberOfProjects.find(
+        (p) => p.project === projectName
       );
+      return selectedProject.sumOfProjects;
+    };
+
+    const findAverage = sumProjects.map((project) => {
       return {
-        project: value.project,
-        difficulty: value.difficulty / numberOfProjects2,
-        rating: value.rating / numberOfProjects2,
+        Project: project.Project,
+        Difficulty: project.Difficulty / findNumberOfProject(project.Project),
+        Rating: project.Rating / findNumberOfProject(project.Project),
       };
     });
-    console.log(findAverage);
-
-    //make array with project,difficulty and rating
 
     return (
       <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
         <VictoryGroup offset={10} colorScale={"qualitative"}>
-          <VictoryBar data={findAverage} x="project" y="difficulty" />
-          <VictoryBar data={findAverage} x="project" y="rating" />
+          <VictoryBar data={findAverage} x="Project" y="Difficulty" />
+          <VictoryBar data={findAverage} x="Project" y="Rating" />
         </VictoryGroup>
       </VictoryChart>
     );
