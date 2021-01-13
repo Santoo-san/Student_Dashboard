@@ -5,7 +5,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Student Dashboard</p>
+        <p>
+          Student Dashboard very very very very very very very very veryv ery
+          long title
+        </p>
         <DisplayStudents />
       </header>
     </div>

@@ -13,8 +13,9 @@ class DisplayStudents extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="BarChartContainer">
         <BarChart students={this.state.students} />
+        <p>placeholder text</p>
         <table>
           <tbody>
             {/* {console.log(this.state.students)} */}
