@@ -4,6 +4,7 @@ import {
   VictoryChart,
   VictoryGroup,
   VictoryTheme,
+  VictoryAxis,
   //   VictoryStack,
 } from "victory";
 
@@ -50,7 +51,16 @@ class BarChart extends React.Component {
     });
 
     return (
-      <VictoryChart theme={VictoryTheme.material} domainPadding={20}>
+      <VictoryChart
+        width={2000}
+        theme={VictoryTheme.material}
+        domainPadding={20}
+      >
+        <VictoryAxis
+          fixLabelOverlap={true}
+          style={{ tickLabels: { padding: 20, angle: -45 } }}
+        />
+        <VictoryAxis dependentAxis style={{ tickLabels: { padding: 20 } }} />
         <VictoryGroup offset={10} colorScale={"qualitative"}>
           <VictoryBar data={findAverage} x="Project" y="Difficulty" />
           <VictoryBar data={findAverage} x="Project" y="Rating" />
