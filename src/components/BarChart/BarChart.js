@@ -57,10 +57,24 @@ class BarChart extends React.Component {
         domainPadding={20}
       >
         <VictoryAxis
+          label={"Opdrachten"}
+          padding={{ top: 20, bottom: 60 }}
           fixLabelOverlap={true}
-          style={{ tickLabels: { padding: 20, angle: -45 } }}
+          style={{
+            axisLabel: { padding: 40 },
+            tickLabels: {
+              padding: 1,
+              angle: -45,
+              verticalAnchor: "middle",
+              textAnchor: "end",
+            },
+          }}
         />
-        <VictoryAxis dependentAxis style={{ tickLabels: { padding: 20 } }} />
+        <VictoryAxis
+          dependentAxis
+          label={"Beoordeling"}
+          style={{ tickLabels: { padding: 20 } }}
+        />
         <VictoryGroup offset={10} colorScale={"qualitative"}>
           <VictoryBar data={findAverage} x="Project" y="Difficulty" />
           <VictoryBar data={findAverage} x="Project" y="Rating" />
