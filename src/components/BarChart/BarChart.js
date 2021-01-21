@@ -52,32 +52,62 @@ class BarChart extends React.Component {
 
     return (
       <VictoryChart
+        height={500}
         width={2000}
         theme={VictoryTheme.material}
         domainPadding={20}
+        padding={{ left: 50, right: 30, top: 80, bottom: 150 }}
       >
         <VictoryAxis
           label={"Opdrachten"}
-          padding={{ top: 20, bottom: 60 }}
           fixLabelOverlap={true}
           style={{
-            axisLabel: { padding: 40 },
+            grid: { strokeDasharray: "none", strokeWidth: 0 },
+            axisLabel: { padding: 50, fill: "gold" },
             tickLabels: {
               padding: 1,
               angle: -45,
               verticalAnchor: "middle",
               textAnchor: "end",
+              fill: "white",
+              y: 10,
             },
           }}
         />
         <VictoryAxis
           dependentAxis
           label={"Beoordeling"}
-          style={{ tickLabels: { padding: 20 } }}
+          style={{
+            axisLabel: { fill: "gold" },
+            tickLabels: { fill: "white", padding: 20 },
+          }}
         />
         <VictoryGroup offset={10} colorScale={"qualitative"}>
-          <VictoryBar data={findAverage} x="Project" y="Difficulty" />
-          <VictoryBar data={findAverage} x="Project" y="Rating" />
+          <VictoryBar
+            // barRatio={1}
+            // domainPadding={0.1}
+            // animate={{
+            //   duration: 2000,
+            //   onLoad: { duration: 1000 },
+            // }}
+            barWidth={12}
+            cornerRadius={{ topLeft: 3, topRight: 3 }}
+            data={findAverage}
+            x="Project"
+            y="Difficulty"
+          />
+          <VictoryBar
+            // barRatio={1}
+            // animate={{
+            //   duration: 2000,
+            //   onLoad: { duration: 2000 },
+            // }}
+            barWidth={12}
+            cornerRadius={{ topLeft: 3, topRight: 3 }}
+            data={findAverage}
+            x="Project"
+            y="Rating"
+          />
         </VictoryGroup>
       </VictoryChart>
     );

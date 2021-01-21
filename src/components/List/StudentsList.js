@@ -5,8 +5,12 @@ import { nanoid } from "nanoid";
 class StudentsList extends React.Component {
   render() {
     const { students, readonly, handleClickItem } = this.props;
-    const listItems = students
-      ? students.map((item) => (
+    const findStudents = students.map((a) => a.Name);
+    const filterStudents = [...new Set(findStudents)];
+    filterStudents.sort();
+
+    const listItems = filterStudents
+      ? filterStudents.map((item) => (
           <ListItem
             key={nanoid(10)}
             item={item}

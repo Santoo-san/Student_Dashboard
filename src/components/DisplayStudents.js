@@ -16,12 +16,10 @@ class DisplayStudents extends React.Component {
       <div className="BarChartContainer">
         <BarChart students={this.state.students} />
         <p>placeholder text</p>
-        <table>
-          <tbody>
-            {/* {console.log(this.state.students)} */}
-            <StudentsList students={this.state.students} />
-          </tbody>
-        </table>
+        <div>
+          {/* {console.log(this.state.students)} */}
+          <StudentsList students={this.state.students} />
+        </div>
       </div>
     );
   }
