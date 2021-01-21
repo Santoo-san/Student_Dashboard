@@ -11,44 +11,60 @@ import {
 class BarChartSingleStudent extends React.Component {
   render() {
     const { students } = this.props;
-    const allProjects = students.map((a) => a.Project);
-    const getProjectNames = [...new Set(allProjects)];
+    const item = "Martina";
+    console.log(students);
+    console.log(item);
+    // Zoiets:
 
-    const sortedProjects = getProjectNames.map((project) => {
-      return students.filter((x) => x.Project === project);
-    });
+    const individualStudentData = students.filter(
+      (student) => student.Name === item
+    );
+    console.log(individualStudentData);
+    const studentName = individualStudentData[0].Name;
+    console.log(studentName);
+    // const getProjectsOfSingleStudents = students.filter(
+    //   (x) => x.Name === onclick.name
+    // ); //onclick.name
+    // this.props.studentData[this.props.id].name
 
-    const sumProjects = sortedProjects.map((projects) => {
-      return projects.reduce((sum, project) => {
-        return {
-          Project: project.Project,
-          Difficulty: sum.Difficulty + project.Difficulty,
-          Rating: sum.Rating + project.Rating,
-        };
-      });
-    });
+    // const allProjects = students.map((a) => a.Project);
+    // const getProjectNames = [...new Set(allProjects)];
 
-    const findNumberOfProjects = sortedProjects.map((project) => {
-      return {
-        project: project[0].Project,
-        sumOfProjects: project.length,
-      };
-    });
+    // const sortedProjects = getProjectNames.map((project) => {
+    // return students.filter((x) => x.Project === project);
+    // });
 
-    const findNumberOfProject = (projectName) => {
-      const selectedProject = findNumberOfProjects.find(
-        (p) => p.project === projectName
-      );
-      return selectedProject.sumOfProjects;
-    };
+    // const sumProjects = sortedProjects.map((projects) => {
+    //   return projects.reduce((sum, project) => {
+    //     return {
+    //       Project: project.Project,
+    //       Difficulty: sum.Difficulty + project.Difficulty,
+    //       Rating: sum.Rating + project.Rating,
+    //     };
+    //   });
+    // });
 
-    const findAverage = sumProjects.map((project) => {
-      return {
-        Project: project.Project,
-        Difficulty: project.Difficulty / findNumberOfProject(project.Project),
-        Rating: project.Rating / findNumberOfProject(project.Project),
-      };
-    });
+    // const findNumberOfProjects = sortedProjects.map((project) => {
+    //   return {
+    //     project: project[0].Project,
+    //     sumOfProjects: project.length,
+    //   };
+    // });
+
+    // const findNumberOfProject = (projectName) => {
+    //   const selectedProject = findNumberOfProjects.find(
+    //     (p) => p.project === projectName
+    //   );
+    //   return selectedProject.sumOfProjects;
+    // };
+
+    // const findAverage = sumProjects.map((project) => {
+    //   return {
+    //     Project: project.Project,
+    //     Difficulty: project.Difficulty / findNumberOfProject(project.Project),
+    //     Rating: project.Rating / findNumberOfProject(project.Project),
+    //   };
+    // });
 
     return (
       <VictoryChart
@@ -92,11 +108,13 @@ class BarChartSingleStudent extends React.Component {
             // }}
             barWidth={12}
             cornerRadius={{ topLeft: 3, topRight: 3 }}
-            data={findAverage}
+            // data={findAverage}
+
+            data={individualStudentData}
             x="Project"
             y="Difficulty"
           />
-          <VictoryBar
+          {/* <VictoryBar
             // barRatio={1}
             // animate={{
             //   duration: 2000,
@@ -104,10 +122,11 @@ class BarChartSingleStudent extends React.Component {
             // }}
             barWidth={12}
             cornerRadius={{ topLeft: 3, topRight: 3 }}
-            data={findAverage}
+            // data={findAverage}
+            data={this.props.studentData[this.props.key].Project}
             x="Project"
             y="Rating"
-          />
+          /> */}
         </VictoryGroup>
       </VictoryChart>
     );
