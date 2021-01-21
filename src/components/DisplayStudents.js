@@ -1,7 +1,8 @@
 import React from "react";
 import StudentData from "../StudentData/StudentData";
 import StudentsList from "./List/StudentsList";
-import BarChart from "./BarChart/BarChart";
+import BarChartAllStudents from "./BarChart/BarChartSingleStudent";
+import BarChartSingleStudent from "./BarChart/BarChartSingleStudent";
 
 class DisplayStudents extends React.Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class DisplayStudents extends React.Component {
   render() {
     return (
       <div className="BarChartContainer">
-        <BarChart students={this.state.students} />
+        <BarChartAllStudents students={this.state.students} />
+        <BarChartSingleStudent students={this.state.students} />
         <p>placeholder text</p>
         <div>
           {/* {console.log(this.state.students)} */}

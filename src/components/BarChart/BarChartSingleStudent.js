@@ -8,7 +8,7 @@ import {
   //   VictoryStack,
 } from "victory";
 
-class BarChart extends React.Component {
+class BarChartSingleStudent extends React.Component {
   render() {
     const { students } = this.props;
     const allProjects = students.map((a) => a.Project);
@@ -114,4 +114,4 @@ class BarChart extends React.Component {
   }
 }
 
-export default BarChart;
+export default BarChartSingleStudent;
