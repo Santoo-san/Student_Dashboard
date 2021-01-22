@@ -30,6 +30,9 @@
 .App-link {
   color: #61dafb;
 }
+.titleSingleStudentBar {
+  color: gold;
+}
 
 @keyframes App-logo-spin {
   from {
