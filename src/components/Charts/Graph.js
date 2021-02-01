@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table() {
+function Graph() {
   return (
     <div>
       <h1> About Us</h1>
@@ -9,4 +9,4 @@ function Table() {
   );
 }
 
-export default Table;
+export default Graph;

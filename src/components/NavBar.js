@@ -6,8 +6,8 @@ function Navbar() {
     <nav className="NavBar">
       <h1>Student Dashboard</h1>
       <div className="Nav">
-        <Link to="/">Grafiek alle studenten</Link>
-        <Link to="/Table">Tabel alle studenten</Link>
+        <Link to="/">Staafgrafiek alle studenten</Link>
+        <Link to="/Graph">Lijngrafiek alle studenten</Link>
       </div>
     </nav>
   );

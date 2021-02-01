@@ -1,7 +1,7 @@
 import React from "react";
 import StudentData from "../StudentData/StudentData";
 import StudentsList from "./List/StudentsList";
-import BarChartAllStudents from "./BarChart/BarChartAllStudents";
+import BarChartAllStudents from "./Charts/BarChartAllStudents";
 
 class DisplayStudents extends React.Component {
   constructor(props) {

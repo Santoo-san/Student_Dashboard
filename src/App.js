@@ -1,8 +1,8 @@
 import "./App.css";
 import DisplayStudents from "./components/DisplayStudents";
-import Table from "./components/Table";
+import Graph from "./components/Charts/Graph";
 import Navbar from "./components/NavBar";
-import BarChartSingleStudent from "./components/BarChart/BarChartSingleStudent";
+import BarChartSingleStudent from "./components/Charts/BarChartSingleStudent";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <div className="App">
         <Navbar />
         <Route path="/" component={DisplayStudents} exact />
-        <Route exact path="/Table" component={Table} />
+        <Route exact path="/Graph" component={Graph} />
         <Route
           exact
           path="/student/:studentName"
