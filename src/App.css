@@ -1,44 +1,95 @@
-/* .App {
-  text-align: center;
-  background: #003a90;
-  color: white;
-} */
+/* goud
+#dead54
+#d8a340
+#b08e33 */
 
-.BarChartContainer {
+/* blauw
+#021d74
+#001c6f
+#0058aa
+#003a90
+#008aca */
+
+/* Rood
+#c90519 */
+
+/* Wit
+#ffffff */
+
+html {
   background: #003a90;
+}
+
+.App {
+  margin-left: 10px;
   color: white;
+}
+
+.NavBar {
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+}
+.Nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Nav > a,
+a:visited {
+  color: black;
+  background: #b08e33;
+  border: solid 3px #dead54;
+  border-radius: 5px;
+  padding: 7px;
+  margin: 5px;
+}
+
+.NavBar li {
   width: 100%;
 }
 
-.BarChart {
-  background: #003a90;
-  color: white;
+.Container {
+  width: 100%;
 }
 
-.App-header {
-  background: #003a90;
-  color: white;
-  min-height: 100vh;
+.titleBarChart,
+.titleStudentslist {
+  color: #b08e33;
+}
+
+li {
+  list-style-type: none;
+}
+
+a,
+a:visited,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: #000;
+}
+
+.studentListContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  margin-right: 15px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-.titleSingleStudentBar {
-  color: gold;
+.listItemDiv {
+  width: 100px;
+  color: black;
+  background: #b08e33;
+  border: solid 3px #dead54;
+  border-radius: 5px;
+  padding: 7px;
+  margin: 1px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.listItemDiv:nth-child(even) {
+  background: #dead54;
+  border: solid 3px#b08e33;
 }

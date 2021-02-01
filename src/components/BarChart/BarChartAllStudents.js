@@ -5,7 +5,7 @@ import {
   VictoryGroup,
   VictoryTheme,
   VictoryAxis,
-  //   VictoryStack,
+  VictoryLegend,
 } from "victory";
 
 class BarChartAllStudents extends React.Component {
@@ -51,65 +51,101 @@ class BarChartAllStudents extends React.Component {
     });
 
     return (
-      <VictoryChart
-        height={500}
-        width={2000}
-        theme={VictoryTheme.material}
-        domainPadding={20}
-        padding={{ left: 50, right: 30, top: 80, bottom: 150 }}
-      >
-        <VictoryAxis
-          label={"Opdrachten"}
-          fixLabelOverlap={true}
-          style={{
-            grid: { strokeDasharray: "none", strokeWidth: 0 },
-            axisLabel: { padding: 50, fill: "gold" },
-            tickLabels: {
-              padding: 1,
-              angle: -45,
-              verticalAnchor: "middle",
-              textAnchor: "end",
-              fill: "white",
-              y: 10,
-            },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          label={"Beoordeling"}
-          style={{
-            axisLabel: { fill: "gold" },
-            tickLabels: { fill: "white", padding: 20 },
-          }}
-        />
-        <VictoryGroup offset={10} colorScale={"qualitative"}>
-          <VictoryBar
-            // barRatio={1}
-            // domainPadding={0.1}
-            // animate={{
-            //   duration: 2000,
-            //   onLoad: { duration: 1000 },
-            // }}
-            barWidth={12}
-            cornerRadius={{ topLeft: 3, topRight: 3 }}
-            data={findAverage}
-            x="Project"
-            y="Difficulty"
+      <div>
+        <h4 className="titleBarChart">Totaal alle studenten</h4>
+        <VictoryChart
+          height={500}
+          width={2000}
+          theme={VictoryTheme.material}
+          domainPadding={20}
+          padding={{ left: 50, right: 30, top: 10, bottom: 150 }}
+        >
+          <VictoryLegend
+            x={125}
+            y={420}
+            title="Legenda"
+            centerTitle
+            orientation="horizontal"
+            gutter={40}
+            colorScale={"qualitative"}
+            style={{
+              border: { stroke: "white" },
+              title: { fontSize: 20, fill: "white" },
+              data: { fill: "white" },
+            }}
+            data={[
+              {
+                name: "Moeilijkheid",
+                labels: { fontSize: 17, fill: "white" },
+                symbol: {
+                  fill: "Gray",
+                  type: "square",
+                },
+              },
+              {
+                name: "Plezier",
+                labels: { fontSize: 17, fill: "white" },
+                symbol: {
+                  fill: "MediumSeaGreen",
+                  type: "square",
+                },
+              },
+            ]}
           />
-          <VictoryBar
-            // barRatio={1}
-            // animate={{
-            //   duration: 2000,
-            //   onLoad: { duration: 2000 },
-            // }}
-            barWidth={12}
-            cornerRadius={{ topLeft: 3, topRight: 3 }}
-            data={findAverage}
-            x="Project"
-            y="Rating"
+          <VictoryAxis
+            label={"Opdrachten"}
+            fixLabelOverlap={true}
+            style={{
+              grid: { strokeDasharray: "none", strokeWidth: 0 },
+              axisLabel: { padding: 60, fill: "#dead54", fontSize: 20 },
+              tickLabels: {
+                padding: 1,
+                angle: -45,
+                verticalAnchor: "middle",
+                textAnchor: "end",
+                fill: "white",
+                y: 10,
+                fontSize: 15,
+              },
+            }}
           />
-        </VictoryGroup>
-      </VictoryChart>
+          <VictoryAxis
+            dependentAxis
+            label={"Beoordeling"}
+            style={{
+              axisLabel: { fill: "#dead54", fontSize: 19 },
+              tickLabels: { fill: "white", padding: 25, fontSize: 15 },
+            }}
+          />
+          <VictoryGroup offset={10} colorScale={"qualitative"}>
+            <VictoryBar
+              // barRatio={1}
+              // domainPadding={0.1}
+              // animate={{
+              //   duration: 2000,
+              //   onLoad: { duration: 1000 },
+              // }}
+              barWidth={12}
+              cornerRadius={{ topLeft: 3, topRight: 3 }}
+              data={findAverage}
+              x="Project"
+              y="Difficulty"
+            />
+            <VictoryBar
+              // barRatio={1}
+              // animate={{
+              //   duration: 2000,
+              //   onLoad: { duration: 2000 },
+              // }}
+              barWidth={12}
+              cornerRadius={{ topLeft: 3, topRight: 3 }}
+              data={findAverage}
+              x="Project"
+              y="Rating"
+            />
+          </VictoryGroup>
+        </VictoryChart>
+      </div>
     );
   }
 }
