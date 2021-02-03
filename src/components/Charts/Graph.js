@@ -92,7 +92,7 @@ class Graph extends React.Component {
                 name: "Moeilijkheid",
                 labels: { fontSize: 17, fill: "white" },
                 symbol: {
-                  fill: "Gray",
+                  fill: "rgb(51, 77, 92)",
                   type: "square",
                 },
               },
@@ -100,7 +100,7 @@ class Graph extends React.Component {
                 name: "Plezier",
                 labels: { fontSize: 17, fill: "white" },
                 symbol: {
-                  fill: "MediumSeaGreen",
+                  fill: "rgb(69, 178, 157)",
                   type: "square",
                 },
               },
@@ -140,19 +140,19 @@ class Graph extends React.Component {
                 data: { strokeWidth: 10 },
                 parent: { border: "1px solid #ccc" },
               }}
-              // animate={{
-              //   duration: 2000,
-              //   onLoad: { duration: 1000 },
-              // }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
             />
             <VictoryLine
               data={findAverage}
               x="Project"
               y="Rating"
-              // animate={{
-              //   duration: 3000,
-              //   onLoad: { duration: 2000 },
-              // }}
+              animate={{
+                duration: 3000,
+                onLoad: { duration: 2000 },
+              }}
               style={{
                 data: { strokeWidth: 10 },
                 parent: { border: "1px solid #ccc" },

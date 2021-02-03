@@ -83,7 +83,7 @@ class BarChartAllStudents extends React.Component {
                 name: "Moeilijkheid",
                 labels: { fontSize: 17, fill: "white" },
                 symbol: {
-                  fill: "Gray",
+                  fill: "rgb(51, 77, 92)",
                   type: "square",
                 },
               },
@@ -91,7 +91,7 @@ class BarChartAllStudents extends React.Component {
                 name: "Plezier",
                 labels: { fontSize: 17, fill: "white" },
                 symbol: {
-                  fill: "MediumSeaGreen",
+                  fill: "rgb(69, 178, 157)",
                   type: "square",
                 },
               },
@@ -124,12 +124,10 @@ class BarChartAllStudents extends React.Component {
           />
           <VictoryGroup offset={13.5} colorScale={"qualitative"}>
             <VictoryBar
-              // barRatio={1}
-              // domainPadding={0.1}
-              // animate={{
-              //   duration: 2000,
-              //   onLoad: { duration: 1000 },
-              // }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 1000 },
+              }}
               barWidth={12}
               cornerRadius={{ topLeft: 3, topRight: 3 }}
               data={findAverage}
@@ -140,11 +138,10 @@ class BarChartAllStudents extends React.Component {
               data={findAverage}
               x="Project"
               y="Rating"
-              // barRatio={1}
-              // animate={{
-              //   duration: 2000,
-              //   onLoad: { duration: 2000 },
-              // }}
+              animate={{
+                duration: 2000,
+                onLoad: { duration: 2000 },
+              }}
               barWidth={12}
               cornerRadius={{ topLeft: 3, topRight: 3 }}
               labelComponent={<VictoryTooltip />}
