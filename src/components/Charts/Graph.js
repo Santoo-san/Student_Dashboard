@@ -22,15 +22,15 @@ class Graph extends React.Component {
 
   render() {
     const students = StudentData.students;
-    const allProjects = students.map((a) => a.Project);
-    const getProjectNames = [...new Set(allProjects)];
+    const getAllProjects = students.map((a) => a.Project);
+    const getProjectNames = [...new Set(getAllProjects)];
 
-    const sortedProjects = getProjectNames.map((project) => {
+    const sortProjects = getProjectNames.map((project) => {
       return students.filter((x) => x.Project === project);
     });
 
-    const sumProjects = sortedProjects.map((projects) => {
-      return projects.reduce((sum, project) => {
+    const sumProjects = sortProjects.map((assignments) => {
+      return assignments.reduce((sum, project) => {
         return {
           Project: project.Project,
           Difficulty: sum.Difficulty + project.Difficulty,
@@ -39,10 +39,10 @@ class Graph extends React.Component {
       });
     });
 
-    const findNumberOfProjects = sortedProjects.map((project) => {
+    const findNumberOfProjects = sortProjects.map((assignment) => {
       return {
-        project: project[0].Project,
-        sumOfProjects: project.length,
+        project: assignment[0].Project,
+        sumOfProjects: assignment.length,
       };
     });
 
@@ -53,11 +53,12 @@ class Graph extends React.Component {
       return selectedProject.sumOfProjects;
     };
 
-    const findAverage = sumProjects.map((project) => {
+    const findAverage = sumProjects.map((assignments) => {
       return {
-        Project: project.Project,
-        Difficulty: project.Difficulty / findNumberOfProject(project.Project),
-        Rating: project.Rating / findNumberOfProject(project.Project),
+        Project: assignments.Project,
+        Difficulty:
+          assignments.Difficulty / findNumberOfProject(assignments.Project),
+        Rating: assignments.Rating / findNumberOfProject(assignments.Project),
       };
     });
 
