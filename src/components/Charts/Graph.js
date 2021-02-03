@@ -1,17 +1,9 @@
 import React from "react";
 import StudentData from "../../StudentData/StudentData";
 
-// function Graph() {
-//   return (
-//     <div>
-//       <h1> About Us</h1>
-//       <p>Sla jouw favo playlist op!</p>
-//     </div>
-//   );
-// }
-
 import {
-  VictoryBar,
+  VictoryVoronoiContainer,
+  VictoryTooltip,
   VictoryLine,
   VictoryChart,
   VictoryGroup,
@@ -78,6 +70,9 @@ class Graph extends React.Component {
           theme={VictoryTheme.material}
           domainPadding={0}
           padding={{ left: 50, right: 30, top: 10, bottom: 150 }}
+          containerComponent={
+            <VictoryVoronoiContainer mouseFollowTooltips voronoiDimension="x" />
+          }
         >
           <VictoryLegend
             x={125}
@@ -138,32 +133,32 @@ class Graph extends React.Component {
           />
           <VictoryGroup offset={0} colorScale={"qualitative"}>
             <VictoryLine
+              data={findAverage}
+              x="Project"
+              y="Difficulty"
               style={{
-                data: { strokeWidth: 15, strokeLinecap: "round" },
+                data: { strokeWidth: 10 },
                 parent: { border: "1px solid #ccc" },
               }}
-              // domainPadding={0.1}
               // animate={{
               //   duration: 2000,
               //   onLoad: { duration: 1000 },
               // }}
-              data={findAverage}
-              x="Project"
-              y="Difficulty"
             />
             <VictoryLine
-              // barRatio={1}
-              // animate={{
-              //   duration: 2000,
-              //   onLoad: { duration: 2000 },
-              // }}
-              style={{
-                data: { strokeWidth: 15, strokeLinecap: "round" },
-                parent: { border: "1px solid #ccc" },
-              }}
               data={findAverage}
               x="Project"
               y="Rating"
+              // animate={{
+              //   duration: 3000,
+              //   onLoad: { duration: 2000 },
+              // }}
+              style={{
+                data: { strokeWidth: 10 },
+                parent: { border: "1px solid #ccc" },
+              }}
+              labelComponent={<VictoryTooltip />}
+              labels={({ datum }) => `Opdracht: ${datum.Project}`}
             />
           </VictoryGroup>
         </VictoryChart>

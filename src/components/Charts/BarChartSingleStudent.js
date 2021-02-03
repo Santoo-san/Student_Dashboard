@@ -7,6 +7,8 @@ import {
   VictoryTheme,
   VictoryAxis,
   VictoryLegend,
+  VictoryVoronoiContainer,
+  VictoryTooltip,
 } from "victory";
 import { Link } from "react-router-dom";
 
@@ -35,6 +37,9 @@ class BarChartSingleStudent extends React.Component {
           theme={VictoryTheme.material}
           domainPadding={20}
           padding={{ left: 50, right: 30, top: 10, bottom: 150 }}
+          containerComponent={
+            <VictoryVoronoiContainer mouseFollowTooltips voronoiDimension="x" />
+          }
         >
           <VictoryLegend
             x={125}
@@ -93,7 +98,7 @@ class BarChartSingleStudent extends React.Component {
               tickLabels: { fill: "white", padding: 25, fontSize: 15 },
             }}
           />
-          <VictoryGroup offset={10} colorScale={"qualitative"}>
+          <VictoryGroup offset={13.5} colorScale={"qualitative"}>
             <VictoryBar
               // barRatio={1}
               // animate={{
@@ -107,6 +112,9 @@ class BarChartSingleStudent extends React.Component {
               y="Difficulty"
             />
             <VictoryBar
+              data={getSingleStudentData}
+              x="Project"
+              y="Rating"
               // barRatio={1}
               // animate={{
               //   duration: 2000,
@@ -114,9 +122,8 @@ class BarChartSingleStudent extends React.Component {
               // }}
               barWidth={12}
               cornerRadius={{ topLeft: 3, topRight: 3 }}
-              data={getSingleStudentData}
-              x="Project"
-              y="Rating"
+              labelComponent={<VictoryTooltip />}
+              labels={({ datum }) => `Opdracht: ${datum.Project}`}
             />
           </VictoryGroup>
         </VictoryChart>
