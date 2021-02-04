@@ -1,14 +1,18 @@
 import React from "react";
 import { nanoid } from "nanoid";
+import { Link } from "react-router-dom";
 
-const ListItem = ({ item }) => {
+const ListItem = ({ studentName }) => {
   return (
-    <tr key={nanoid(10)} className="list-item" value={item.Name}>
-      <td className="table-data"> {item.Name}</td>
-      <td className="table-data"> {item.Project}</td>
-      <td className="table-data"> {item.Difficulty}</td>
-      <td className="table-data"> {item.Rating}</td>
-    </tr>
+    <div className="listItemDiv">
+      <Link
+        key={nanoid(10)}
+        className="studentName"
+        to={`/student/${studentName}`}
+      >
+        <li className="list-item">{studentName}</li>
+      </Link>
+    </div>
   );
 };
 
